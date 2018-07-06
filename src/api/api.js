@@ -25,6 +25,9 @@ const getTopics = (params) => wxRequest(params, baseUrlQuan + `/api/post`)
 
 // 评论详情
 const getTopic = (params) => wxRequest(params, baseUrlQuan + `/api/post/${params}`)
+
+// 评论详情
+const getTopicComments = (params) => wxRequest(params, baseUrlQuan + `/api/reply`)
  
 export default {
   getSlides,
@@ -33,5 +36,6 @@ export default {
   getRelatedNews,
   getNewsComments,
   getTopics,
-  getTopic
+  getTopic,
+  getTopicComments
 }
