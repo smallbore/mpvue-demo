@@ -15,10 +15,12 @@
     <div class="topic-contemt">
         <div v-html="topic.content"></div>
     </div>
-    <div class="comment-wrap" 
-      v-for="comment of topic.reply"
-      :key="comment.id"
-      :comment="comment"></div>
+    <div class="comment-wrap"> 
+        <commentItem v-for="comment of topic.reply"
+            :key="comment.id"
+            :comment="comment">
+        </commentItem>
+      </div>
 </div>
 </template>
 
@@ -46,16 +48,16 @@ export default {
   },
   methods: {
     async getTopic () {
-    //   const { query } = this.$route
-    //   const topic = await api.getTopic(query.id)
-    //   console.log(topic)
-    //   if (!topic) return
-    //   topic.content = topic.content.replace('!--IMG_1--', `img src="${topic.imgs[0]}" width="100%" /`)
-    //   topic.reply = topic.reply.map(formatComment)
-    //   this.topic = Object.assign({
-    //     title: query.title,
-    //     vc: query.vc
-    //   }, topic)
+      const { query } = this.$route
+      const res = await api.getTopic(query.id)
+      const topic = res.data
+      if (!topic) return
+      topic.content = topic.content.replace('!--IMG_1--', `img src="${topic.imgs[0]}" width="100%" /`)
+      topic.reply = topic.reply.map(formatComment)
+      this.topic = Object.assign({
+        title: query.title,
+        vc: query.vc
+      }, topic)
     },
     // async getComments () {
     //   if (this.loading) return

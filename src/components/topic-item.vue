@@ -1,5 +1,5 @@
 <template>
-<div class="topic-item">
+<div class="topic-item" @click="turn">
     <img class="topic-headimg" src="/static/images/avatar_default.png" />
     <img class="topic-headimg" :src="topic.author.headimg">
     <div class="topic-title">{{topic.tag}} {{topic.title}}</div>
@@ -25,7 +25,7 @@ export default {
     turn () {
       const { id, title, author, viewcount } = this.topic
       this.$router.push({
-        path: '/pages/quanzi/detail',
+        path: '/pages/problemdetail',
         query: {
           id,
           title,

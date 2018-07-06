@@ -23,11 +23,15 @@ const getNewsComments = (params) => wxRequest(params, baseUrlDyn + `/json/commen
 // 圈子列表
 const getTopics = (params) => wxRequest(params, baseUrlQuan + `/api/post`)
 
+// 评论详情
+const getTopic = (params) => wxRequest(params, baseUrlQuan + `/api/post/${params}`)
+ 
 export default {
   getSlides,
   getNewsList,
   getNews,
   getRelatedNews,
   getNewsComments,
-  getTopics
+  getTopics,
+  getTopic
 }

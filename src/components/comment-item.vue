@@ -1,9 +1,9 @@
 <template>
 <view class="comment-item">
     <view class="comment-header">
-        <view class="comment-author"></view>
-        <view class="comment-phone"></view>
-        <view class="comment-floor"></view>
+        <view class="comment-author">{{comment.author}}</view>
+        <view class="comment-phone">{{comment.phone}}</view>
+        <view class="comment-floor">{{comment.floor}}</view>
     </view>
     <view class="comment-content">
         <view v-html="comment.content"></view>
