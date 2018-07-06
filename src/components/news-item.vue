@@ -23,9 +23,6 @@ export default {
       const { link } = this.news
       this.$router.push(link)
     }
-  },
-  created(){
-    console.log(this.news)
   }
 }
 </script>
