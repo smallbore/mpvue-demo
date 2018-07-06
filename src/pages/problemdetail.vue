@@ -44,7 +44,7 @@ export default {
     this.getTopic()
   },
   onReachBottom () {
-    // this.getComments()
+    this.getComments()
   },
   methods: {
     async getTopic () {
@@ -59,18 +59,25 @@ export default {
         vc: query.vc
       }, topic)
     },
-    // async getComments () {
-    //   if (this.loading) return
-    //   this.loading = true
-    //   const { query } = this.$route
-    //   const comments = this.topic.reply
-    //   const lastComment = comments[comments.length - 1]
-    //   const newComments = await api.getTopicComments(query.id, lastComment.id)
-    //   if (!newComments) return
-    //   const formatedComments = newComments.map(formatComment)
-    //   this.topic.reply = this.topic.reply.concat(formatedComments)
-    //   this.loading = false
-    // }
+    async getComments () {
+      if (this.loading) return
+      this.loading = true
+      const { query } = this.$route
+      const comments = this.topic.reply
+      const lastComment = comments[comments.length - 1]
+      const newComments = await api.getTopicComments({
+          query: {
+              postid:query.id, 
+              replyidlessthan:lastComment.id
+          }
+        })
+        console.log(newComments)
+      if (!newComments) return
+      let res = newComments.data
+      const formatedComments = res.map(formatComment)
+      this.topic.reply = this.topic.reply.concat(formatedComments)
+      this.loading = false
+    }
   }
 }
 </script>
