@@ -19,6 +19,20 @@ module.exports = [
       config: {
         navigationBarTitleText: '评论列表'
       }
+    },
+    {
+      path: 'pages/problem',
+      name: 'problem',
+      config: {
+        navigationBarTitleText: '圈子'
+      }
+    },
+    {
+      path: 'pages/problemdetail',
+      name: 'problemdetail',
+      config: {
+        navigationBarTitleText: '详情'
+      }
     }
 ]
   

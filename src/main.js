@@ -14,7 +14,7 @@ export default {
   config: {
     // 页面前带有 ^ 符号的，会被编译成首页，其他页面可以选填，我们会自动把 webpack entry 里面的入口页面加进去
     pages: [
-      '^pages/index'
+      '^pages/index',
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -33,7 +33,7 @@ export default {
         iconPath: 'static/images/news.png',
         selectedIconPath: 'static/images/news-active.png'
       }, {
-        pagePath: 'pages/index',
+        pagePath: 'pages/problem',
         text: '圈子',
         iconPath: 'static/images/quanzi.png',
         selectedIconPath: 'static/images/quanzi-active.png'

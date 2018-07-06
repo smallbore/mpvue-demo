@@ -20,10 +20,14 @@ const getRelatedNews = (params) => wxRequest(params, baseUrlApi + `/json/tags/0$
 // 评论列表
 const getNewsComments = (params) => wxRequest(params, baseUrlDyn + `/json/commentlist/350/87a8e5b144d81938.json`)
 
+// 圈子列表
+const getTopics = (params) => wxRequest(params, baseUrlQuan + `/api/post`)
+
 export default {
   getSlides,
   getNewsList,
   getNews,
   getRelatedNews,
-  getNewsComments
+  getNewsComments,
+  getTopics
 }
