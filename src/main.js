@@ -18,9 +18,12 @@ export default {
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'it之家',
-      navigationBarTextStyle: 'black'
+      backgroundColor: '#d22222',
+      backgroundColorTop: '#d22222',
+      navigationBarBackgroundColor: '#d22222',
+      navigationBarTitleText: 'IT之家Lite',
+      backgroundTextStyle: 'dark',
+      navigationBarTextStyle: 'white'
     },
     tabBar: {
       color: '#999',

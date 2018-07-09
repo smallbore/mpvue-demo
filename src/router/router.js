@@ -3,7 +3,8 @@ module.exports = [
       path: '/pages/index',
       name: 'index',
       config: {
-        navigationBarTitleText: 'it之家'
+        navigationBarTitleText: 'it之家',
+        enablePullDownRefresh: true
       }
     },
     {
@@ -24,7 +25,8 @@ module.exports = [
       path: 'pages/problem',
       name: 'problem',
       config: {
-        navigationBarTitleText: '圈子'
+        navigationBarTitleText: '圈子',
+        enablePullDownRefresh: true
       }
     },
     {

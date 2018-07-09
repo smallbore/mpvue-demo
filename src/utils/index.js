@@ -26,7 +26,7 @@ export function formatSlideList (slide) {
   return {
     title,
     image,
-    link: `/pages/newsdetail?id=${link}&title=${title}`
+    link: `/pages/newdetail?id=${link}&title=${title}`
   }
 }
 
@@ -55,7 +55,8 @@ export function formatComment (comment) {
 
 export function formatTopicList (topic) {
   const { id, c, cn, t, vc, rc, rt, un, uid } = topic
-  const headpath = `00${String(uid).padStart(7, '0').replace(/\B([0-9]{2})/g, '/$1')}_60.jpg`
+  // 头像找不，手机页面，整个数组都不能显示，所以去掉头像显示
+  // const headpath = `00${String(uid).padStart(7, '0').replace(/\B([0-9]{2})/g, '/$1')}_60.jpg`
   return {
     id,
     title: t,
@@ -63,7 +64,7 @@ export function formatTopicList (topic) {
     type: cn,
     author: {
       nickname: un,
-      headimg: `https://avatar.ithome.com/avatars/${headpath}`
+      // headimg: `https://avatar.ithome.com/avatars/${headpath}`
     },
     viewcount: vc,
     replycount: rc,

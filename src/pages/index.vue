@@ -1,5 +1,5 @@
 <template>
-  <view class="wx-pages">
+  <view class="container">
     <swiper class="slider-wrap" 
     autoplay
     indicator-dots
@@ -7,7 +7,7 @@
     indicator-color="rgba(255, 255, 255, .3)"
     indicator-active-color="rgba(210, 34, 34, .7)">
       <swiper-item v-for="slide of slides" :key="slide.title">
-        <view class="slider-item">
+        <view class="slider-item" @click="$router.push(slide.link)">
           <view class="slider-title">{{slide.title}}</view>
           <img :src="slide.image" mode="aspectFill" />
         </view>
@@ -43,19 +43,38 @@ export default {
           slide => slide.opentype['#text'] === '1'
         )
         const formatedSlides = filtedSlides.map(formatSlideList)
+        // console.log(formatedSlides)
         that.slides = formatedSlides
       }
     },
-    async getNewsList(){
+    async getNewsList(init){
       let that = this 
       let res = await api.getNewsList();
       if(res.errMsg == "request:ok"){
         let newslist = res.data.newslist
         const formatedNews = newslist.map(formatNewsList)
         // console.log(formatedNews)
-        that.news = formatedNews
+        if(init){
+          that.news = that.news.concat(formatedNews)
+        }else{
+          that.news = formatedNews
+        }
+        
       }
+    },
+    async refresh(){
+      await this.getNewsList()
+      wx.stopPullDownRefresh()
+    },
+    loadmore(){
+      this.getNewsList(true)
     }
+  },
+  onPullDownRefresh () {
+    this.refresh()
+  },
+  onReachBottom () {
+    this.loadmore()
   },
   created() {
    this.getSlides()
@@ -65,6 +84,16 @@ export default {
 </script>
 
 <style lang="less">
+.container {
+width:100%;
+min-height:100vh;
+display:flex;
+flex-direction:column;
+// align-items:center;
+// justify-content:flex-start;
+// box-sizing:border-box;
+}
+
 .slider-wrap {
   width: 100%;
   height: 200px;
